@@ -15,7 +15,7 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author Vinic
+ * @author bruno
  */
 @WebServlet(name = "ServerDateServlet", urlPatterns = {"/server-date.html"})
 public class ServerDateServlet extends HttpServlet {
