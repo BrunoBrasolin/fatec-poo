@@ -17,6 +17,13 @@
     <body>
         <%
             ArrayList<Contato> listaContato = (ArrayList) application.getAttribute("listaContato");
+            
+            if (session.getAttribute("message") != null) {%>
+        <script>alert("<%=session.getAttribute("message")%>")</script>
+        <%
+                session.removeAttribute("message");
+            }
+            
             if (listaContato == null) {
                 listaContato = new ArrayList<>();
                 listaContato.add(new Contato("Teste", 123456789, "teste@teste.com"));
@@ -24,11 +31,16 @@
                 application.setAttribute("listaContato", listaContato);
             }
             if (request.getParameter("adicionar") != null) {
-                String name = request.getParameter("name");
-                int telefone = Integer.parseInt(request.getParameter("telefone"));
-                String email = request.getParameter("email");
-                listaContato.add(new Contato(name, telefone, email));
-                response.sendRedirect(request.getRequestURI());
+                try {
+                    String name = request.getParameter("name");
+                    String email = request.getParameter("email");
+                    int telefone = Integer.parseInt(request.getParameter("telefone"));
+                    listaContato.add(new Contato(name, telefone, email));
+                    response.sendRedirect(request.getRequestURI());
+                } catch (NumberFormatException e) {
+                    session.setAttribute("message", "Falha ao adicionar novo contato");
+                    response.sendRedirect(request.getRequestURI());
+                }
             }
             if (request.getParameter("remove") != null) {
                 int i = Integer.parseInt(request.getParameter("i"));
@@ -36,13 +48,14 @@
                 response.sendRedirect(request.getRequestURI());
             }
         %>
-        <form>
+        <h1>Lista de contatos</h1>
+        <form id="add-form">
             <label for="name">Nome</label>
-            <input type="text" name="name" id="name" />
+            <input type="text" name="name" id="name" required/>
             <label for="telefone">Telefone</label>
-            <input type="number" maxlength="11" name="telefone" id="telefone" />
+            <input type="number" name="telefone" id="telefone" required/>
             <label for="email">E-mail</label>
-            <input type="email" name="email" id="email" />
+            <input type="email" name="email" id="email" required/>
             <input type="submit" name="adicionar" value="Adicionar" />
         </form>
         <table>

@@ -8,6 +8,8 @@ and open the template in the editor.
     Author     : bruno
 */
 
+@import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,400;1,500&display=swap');
+
 /* Chrome, Safari, Edge, Opera */
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
@@ -18,4 +20,27 @@ input::-webkit-inner-spin-button {
 /* Firefox */
 input[type=number] {
     -moz-appearance: textfield;
+}
+
+table th, table td {
+    border: 1px solid black;
+    padding: .5rem 1rem;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    font-family: 'Raleway', sans-serif;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+form#add-form input {
+    margin-bottom: 1rem;
 }
