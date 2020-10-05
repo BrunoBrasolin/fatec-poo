@@ -1,3 +1,9 @@
+<%-- 
+    Document   : sobre
+    Created on : 5 de out de 2020, 02:18:35
+    Author     : bruno
+--%>
+
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -6,7 +12,9 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <jsp:include page="WEB-INF/menu.jspf" />
-        <h1>Hello World!</h1>
+        <jsp:include page="WEB-INF/jspf/menu.jspf" />
+        <h1>Bruno Brasolin</h1>
+        <h2>RA: 1290481912003</h2>
+        <h2>Quantidade de disciplinas: </h2>
     </body>
 </html>

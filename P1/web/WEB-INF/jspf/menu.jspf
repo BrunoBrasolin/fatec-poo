@@ -1,7 +1,7 @@
 <nav>
     <ul>
         <li><a href="index.jsp">Início</a></li>
-        <li><a href="disciplinas.jsp">Minhas Disciplinas</a></li>
+        <li><a href="disciplinas.jsp">Minhas disciplinas</a></li>
         <li><a href="sobre.jsp">Sobre</a></li>
     </ul>
 </nav>
