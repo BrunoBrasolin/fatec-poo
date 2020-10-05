@@ -21,6 +21,11 @@ public class Disciplina {
     public Disciplina(String nome, String ementa, int ciclo) {
         this.nome = nome;
         this.ementa = ementa;
+        if (ciclo < 1) {
+            ciclo = 1;
+        } else if (ciclo > 6) {
+            ciclo = 6;
+        }
         this.ciclo = ciclo;
     }
 
@@ -61,6 +66,11 @@ public class Disciplina {
     }
 
     public void setCiclo(int ciclo) {
+        if (ciclo < 1) {
+            ciclo = 1;
+        } else if (ciclo > 6) {
+            ciclo = 6;
+        }
         this.ciclo = ciclo;
     }
 

@@ -21,6 +21,10 @@
             for (int y = 0; y < 6; y++) {
                 disc.add(d.getList(y));
             }
+
+            if (request.getParameter("nota") != null && request.getParameter("i") != null) {
+                disc.get(Integer.parseInt(request.getParameter("i"))).setNota(Double.parseDouble(request.getParameter("nota")));
+            }
         %>
         <h1>Disciplinas</h1>
         <table border="1">
@@ -40,7 +44,12 @@
                     <td><%=disciplina.getNome()%></td>
                     <td><%=disciplina.getEmenta()%></td>
                     <td><%=disciplina.getCiclo()%></td>
-                    <td><%=disciplina.getNota()%></td>
+                    <td>
+                        <form>
+                            <input type="text" name="nota" value="<%=disciplina.getNota()%>" />
+                            <input type="hidden" name="i" value="<%=y%>" />
+                        </form>
+                    </td>
                 </tr>
                 <%}
                 %>
