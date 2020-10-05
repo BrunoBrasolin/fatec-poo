@@ -14,7 +14,8 @@
     </head>
     <body>
         <jsp:include page="WEB-INF/jspf/menu.jspf" />
-        <% Disciplina d = new Disciplina("", "", 1); %>
-        <h1>Hello World!</h1>
+        <h1>Bruno Brasolin Carravieri</h1>
+        <h2>RA: 1290481912003</h2>
+        <h2>Quantidade de disciplinas: </h2>
     </body>
 </html>
