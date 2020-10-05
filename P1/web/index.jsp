@@ -1,9 +1,10 @@
 <%-- 
-    Document   : sobre
-    Created on : 5 de out de 2020, 02:18:35
+    Document   : index
+    Created on : 5 de out de 2020, 03:17:35
     Author     : bruno
 --%>
 
+<%@page import="br.edu.fatecpg.poo.Disciplina"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -13,8 +14,7 @@
     </head>
     <body>
         <jsp:include page="WEB-INF/jspf/menu.jspf" />
-        <h1>Bruno Brasolin</h1>
-        <h2>RA: 1290481912003</h2>
-        <h2>Quantidade de disciplinas: </h2>
+        <% Disciplina d = new Disciplina("", "", 1); %>
+        <h1>Hello World!</h1>
     </body>
 </html>
