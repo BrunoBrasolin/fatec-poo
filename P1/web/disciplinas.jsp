@@ -21,9 +21,11 @@
             for (int y = 0; y < 6; y++) {
                 disc.add(d.getList(y));
             }
-
-            if (request.getParameter("nota") != null && request.getParameter("i") != null) {
-                disc.get(Integer.parseInt(request.getParameter("i"))).setNota(Double.parseDouble(request.getParameter("nota")));
+            try {
+                if (request.getParameter("nota") != null && request.getParameter("i") != null) {
+                    disc.get(Integer.parseInt(request.getParameter("i"))).setNota(Double.parseDouble(request.getParameter("nota")));
+                }
+            } catch (Exception e) {
             }
         %>
         <h1>Disciplinas</h1>
