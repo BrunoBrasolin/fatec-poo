@@ -5,6 +5,7 @@
 --%>
 
 <%@page import="br.edu.fatecpg.poo.Disciplina"%>
+<%@page import="java.util.ArrayList" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -16,17 +17,8 @@
         <jsp:include page="WEB-INF/jspf/menu.jspf" />
         <h1>Bruno Brasolin Carravieri</h1>
         <h2>RA: 1290481912003</h2>
-        <%
-            Disciplina d = new Disciplina("", "", 0);
-            Disciplina a = d.getList(1);
-            int i = 0;
-            try {
-                while (d.getList(i) != null) {
-                    i++;
-                }
-            } catch (Exception e) {
-            }
-        %>
-        <h2>Quantidade de disciplinas: <%=i%></h2>
+        <% ArrayList<Disciplina> disciplinas = Disciplina.getList(); %>
+
+        <h2>Quantidade de Disciplinas Matriculas: <%= disciplinas.size() %></h2>
     </body>
 </html>
