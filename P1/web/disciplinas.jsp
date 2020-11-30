@@ -16,16 +16,17 @@
     <body>
         <jsp:include page="WEB-INF/jspf/menu.jspf" />
         <%
-            Disciplina d = new Disciplina("", "", 0);
-            ArrayList<Disciplina> disc = new ArrayList<Disciplina>();
-            for (int y = 0; y < 6; y++) {
-                disc.add(d.getList(y));
+            if (request.getParameter("nome") != null) {
+                Disciplina.insert(
+                        (String) request.getParameter("nome"),
+                        (String) request.getParameter("ementa"),
+                        Integer.parseInt(request.getParameter("ciclo")),
+                        Double.parseDouble(request.getParameter("nota"))
+                );
             }
-            try {
-                if (request.getParameter("nota") != null && request.getParameter("i") != null) {
-                    disc.get(Integer.parseInt(request.getParameter("i"))).setNota(Double.parseDouble(request.getParameter("nota")));
-                }
-            } catch (Exception e) {
+
+            if (request.getParameter("rowid") != null) {
+                Disciplina.delete(Long.parseLong(request.getParameter("rowid")));
             }
         %>
         <h1>Disciplinas</h1>
@@ -36,20 +37,20 @@
                     <th>Ementa</th>
                     <th>Ciclo</th>
                     <th>Nota</th>
+                    <th>Apagar</th>
                 </tr>
             </thead>
             <tbody>
-                <%
-                    for (int y = 0; y < 6; y++) { %>
+                <%for (Disciplina disciplina : Disciplina.getList()) {%>
                 <tr>
-                    <% Disciplina disciplina = disc.get(y);%>
                     <td><%=disciplina.getNome()%></td>
                     <td><%=disciplina.getEmenta()%></td>
                     <td><%=disciplina.getCiclo()%></td>
+                    <td><%=disciplina.getNota()%></td>
                     <td>
                         <form>
-                            <input type="text" name="nota" value="<%=disciplina.getNota()%>" />
-                            <input type="hidden" name="i" value="<%=y%>" />
+                            <input type="submit" value="Apagar" />
+                            <input type="hidden" name="rowid" value="<%=disciplina.getRowId()%>" />
                         </form>
                     </td>
                 </tr>
@@ -57,5 +58,14 @@
                 %>
             </tbody>
         </table>
+
+        <h2>Adicionar Disciplina</h2>
+        <form>
+            <input type="text" name="nome" placeholder="Nome da Disciplina" />
+            <input type="text" name="ementa" placeholder="Ementa da Disciplina" />
+            <input type="text" name="ciclo" placeholder="Ciclo da Disciplina" />
+            <input type="text" name="nota" placeholder="Nota da Disciplina" />
+            <input type="submit" value="Enviar" />
+        </form>
     </body>
 </html>
